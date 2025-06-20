@@ -1,0 +1,23 @@
+logging:
+  pattern:
+    dateformat: MM-dd HH:mm:ss:SSS
+  level:
+    com.itheima: debug # 设置日志级别
+
+
+spring:
+  rabbitmq:
+    host: 192.168.50.128 # 你的虚拟机IP
+    port: 5672 # 端口
+    virtual-host: /hmall # 虚拟主机
+    username: hmall # 用户名
+    password: hmall # 密码
+    connection-timeout: 1s
+    template:
+      retry:
+        enabled: true # 开启重试
+        multiplier: 2 # 重试倍数
+        max-attempts: 3 # 最大重试次数
+    publisher-confirm-type: correlated # 异步确认模式
+    publisher-returns: true # 开启消息发送失败返回
+
